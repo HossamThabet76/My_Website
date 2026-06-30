@@ -283,12 +283,27 @@ section {
         align-items: center;
     }
 }
-
+@media (max-width:500px){
+    body{
+        font-size: 9px;
+    }
+    .project-card{
+        width: 25em;
+    }
+    .card{
+        width: 25em;
+    }
+}
 @media (max-width:400px){
     body{
-        font-size: 10px;
+        font-size: 8px;
     }
     footer .social-icons a{
         padding: 0 8px 0 0;
+    }
+}
+@media (max-width:340px){
+    body{
+        font-size: 6px;
     }
 }
