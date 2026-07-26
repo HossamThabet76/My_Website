@@ -1,2 +1,2 @@
 # My_Website
-My Website using HTML And CSS
+My Website using HTML And CSS And JavaScript
