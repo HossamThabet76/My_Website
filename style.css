@@ -415,19 +415,19 @@ header ul a:hover{
 }
 .skills .card{
     background-color: white;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items:center;
+    justify-content: space-evenly;
     border-radius: 15px;
     height: 130px;
-    padding: 20px 0;
     transition: .3s;
 }
 .skills .card:hover{
     transform: translateY(-15px);
 }
 .skills .card i{
-    margin-bottom: 20px;
     font-size: 40px;
 }
 .skills .card:first-child i{
@@ -441,10 +441,6 @@ header ul a:hover{
 }
 .skills .card img{
     width: 50px;
-    margin-bottom: 20px;
-}
-.skills .card:nth-child(6) img{
-    margin-bottom: 5px;
 }
 .skills .card h3{
     color: black;
@@ -579,6 +575,37 @@ header ul a:hover{
 .projects .info a:hover{
     color: black;
     transform: scale(1.1);
+}
+.projects .alt-title{
+    text-align: center;
+    color: var(--main-color);
+    margin-bottom: 60px;
+    position: relative;
+}
+.projects .alt-title h3{
+    font-size: 25px;
+    font-weight: 600;
+}
+.projects .alt-title::after{
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    content: "\f103";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    animation: arrow .7s linear infinite;
+}
+@keyframes arrow {
+    0%,100%{
+        transform: translateY(-2px);
+    }
+    50%{
+        transform: translateY(-9px);
+    }
+}
+.projects .mrg{
+    margin-top: 60px;
 }
 .contact{
     padding-top: var(--main-padding);
