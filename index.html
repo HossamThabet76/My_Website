@@ -19,32 +19,37 @@
                     <div></div>
                 </div>
                 <ul id="menu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home" onclick="menu_function() ,line(this.id)" id="1" class="appear">Home</a></li>
+                    <li><a href="#about" onclick="menu_function() ,line(this.id)" id="2">About</a></li>
+                    <li><a href="#skills" onclick="menu_function() ,line(this.id)" id="3">Skills</a></li>
+                    <li><a href="#services" onclick="menu_function() ,line(this.id)" id="4">Services</a></li>
+                    <li><a href="#projects" onclick="menu_function() ,line(this.id)" id="5">Projects</a></li>
+                    <li><a href="#contact" onclick="menu_function() ,line(this.id)" id="6">Contact</a></li>
                 </ul>
+            </div>
+            <div class="buttons">
+                <a href="#" id="moon" onclick="dark()"><i class="fa-solid fa-moon"></i></a>
+                <a href="#" id="sun" onclick="lan2()">EN</a>
             </div>
         </div>
     </header>
     <section class="main" id="home">
         <div class="container">
             <div class=info>
-                <h2>Hello, I'm Hossam</h2>
-                <h1>Front End Developer</h1>
-                <h3>I Build Modern & Responsive Websites</h3>
-                <a href="#projects" class="main-btn">View my work</a>
+                <h4>Hello, I,m</h4>
+                <h1>Hossam Thabet</h1>
+                <h2>Front End Developer</h2>
+                <p>I Build Modern & Responsive Websites.</p>
                 <div class="social-icons">
                     <a href="https://www.linkedin.com/in/hossam-thabet-97ab6a371/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61563285180367" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/hosam_thabet.12/" target="_blank"><i class="fab fa-instagram"></i></a>
                     <a href="https://github.com/HossamThabet76" target="_blank"><i class="fab fa-github"></i></a>
                 </div>
+                <a href="#projects" class="main-btn">View my work</a>
             </div>
             <div class="image">
-                <img src="images/hossam (2).jpeg" alt="image">
+                <img src="images/hos.png" alt="image">
             </div>
         </div>
         <div class="arrow" id="arrow">
@@ -52,13 +57,18 @@
                 <i class="fa-solid fa-arrow-up-long"></i>
             </a>
         </div>
+        <div class="whats">
+            <a href="https://wa.me/201128794045" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+        </div>
     </section>
     <section class="about" id="about">
-        <div class="title">About Me</div>
+        <div class="title about-title">About Me</div>
         <div class="container">
             <div class="text">
-                <h2>I`m <span>Hossam Thabet,</span>a web developer</h2>
-                <p>I`m a front-end web developer with a strong passion for creating visually appealing and user-friendly web applications. i am very passionate about improving my coding skills & developing applications & websites.</p>
+                <h2>I'm <span>Hossam Thabet,</span>a web developer</h2>
+                <p>I'm a front-end web developer with a strong passion for creating visually appealing and user-friendly web applications. i am very passionate about improving my coding skills & developing applications & websites.</p>
                 <p>I have also gained a solid foundation in HTML, CSS and JavaScript. I am always eager to learn new technologies and techniques to enhance my skillset.</p>
             </div>
             <div class="info">
@@ -75,7 +85,7 @@
         </div>
     </section>
     <section class="skills" id="skills">
-        <div class="title">Skills</div>
+        <div class="title skill-title">Skills</div>
         <div class="container">
             <div class="card">
                 <i class="fa-brands fa-html5"></i>
@@ -94,15 +104,15 @@
                 <h3>Sass</h3>
             </div>
             <div class="card">
-                <img src="images/bootstrap.jpeg" alt="bootstrap">
+                <img src="images/bootstrap4.png" alt="bootstrap">
                 <h3>Bootstrap</h3>
             </div>
             <div class="card">
-                <img src="images/C++.png" alt="c++">
+                <img src="images/C++2.png" alt="c++">
                 <h3>C++</h3>
             </div>
             <div class="card">
-                <img src="images/ps.jpeg" alt="Problem Solving">
+                <img src="images/ps4.png" alt="Problem Solving">
                 <h3>Problem Solving</h3>
             </div>
             <div class="card">
@@ -114,59 +124,63 @@
                 <h3>TypeScript</h3>
             </div>
             <div class="card">
-                <img src="images/oop.png" alt="OOP">
+                <img src="images/oop2.png" alt="OOP">
                 <h3>OOP</h3>
             </div>
             <div class="card">
-                <img src="images/data structure.png" alt="data structure">
+                <img src="images/data.png" alt="data structure">
                 <h3>Data Structure</h3>
             </div>
             <div class="card">
-                <img src="images/react.png" alt="react">
+                <i class="fa-brands fa-react react"></i>
                 <h3>React.JS</h3>
+            </div>
+            <div class="card">
+                <img src="images/tailwindcss.svg" alt="taiwind">
+                <h3>TailwindCSS</h3>
             </div>
         </div>
     </section>
     <section class="services" id="services">
-        <h2 class="title">Services</h2>
+        <h2 class="title service-title">Services</h2>
         <div class="container">
             <div class="card">
-                <img src="images/lab.jpeg" alt="labtop">
+                <img src="images/lab2.png" alt="labtop">
                 <div class="info">
                     <h3>Web Development</h3>
                     <p>I can bulid a website by using HTML, CSS and JavaScript.</p>
                 </div>
             </div>
             <div class="card">
-                <img src="images/responsive.jpeg" alt="responsive">
+                <img src="images/responsive2.png" alt="responsive">
                 <div class="info">
                     <h3>Responsive Design</h3>
                     <p>Your website will be 100% reponsive for all devices: Tablets and Smart phones.</p>
                 </div>
             </div>
             <div class="card">
-                <img src="images/creative.jpeg" alt="creative">
+                <img src="images/creative2.png" alt="creative">
                 <div class="info">
                     <h3>Creative Design</h3>
                     <p>I can edit your current website by adding a new content to make it mush better.</p>
                 </div>
             </div>
             <div class="card">
-                <img src="images/idea.jpeg" alt="idea">
+                <img src="images/idea2.png" alt="idea">
                 <div class="info">
                     <h3>Web Ideas</h3>
                     <p>I could turn your ideas into a real projects with high quality.</p>
                 </div>
             </div>
             <div class="card">
-                <img src="images/retouch.jpeg" alt="retouch">
+                <img src="images/retouch2.png" alt="retouch">
                 <div class="info">
                     <h3>Retouch</h3>
                     <p>I can help you by redesign your current website to looks mush better.</p>
                 </div>
             </div>
             <div class="card">
-                <img src="images/support.jpeg" alt="support">
+                <img src="images/support4.png" alt="support">
                 <div class="info">
                     <h3>Support</h3>
                     <p>Support is available if you wanna make any changes for your website after dilvering it.</p>
@@ -175,7 +189,7 @@
         </div>
     </section>
     <section class="projects" id="projects">
-        <h2 class="title">Projects</h2>
+        <h2 class="title project-title">Projects</h2>
         <div class="alt-title">
             <h3>HTML & CSS Projects</h3>
         </div>
@@ -343,29 +357,46 @@
                     <a href="https://hossamthabet76.github.io/tic-tac/" target="_blank">Visit Project</a>
                 </div>
             </div>
+            <div class="card">
+                <div class="image">
+                    <img src="images/port-react.png" />
+                </div>
+                <div class="info">
+                    <p>Portfolio React</p>
+                    <a href="https://hossamthabet76.github.io/portfolio_react/" target="_blank">Visit Project</a>
+                </div>
+            </div>
         </div>
     </section>
-    <section class="cards contact" id="contact">
-        <h2 class="title">Let's work together</h2>
+    <section class="contact" id="contact">
+        <h2 class="title contact-title">Let's work together</h2>
         <div class="container">
-            <div class="card">
-                <div class="icon">
-                    <i class="fas fa-phone"></i>
-                </div>
-                <div class="info">
-                    <h3>Phone</h3>
-                    <p>+201128794045</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="icon">
-                    <i class="fas fa-envelope"></i>
-                </div>
-                <div class="info">
-                    <h3>Email</h3>
+            <div class="cards">
+                <div class="card">
+                    <i class="fa-solid fa-envelope"></i>
+                    <h4>Email</h4>
                     <p>jzjdiskwk@gmail.com</p>
+                    <a href="mailto:jzjdiskwk@gmail.com">Send Message</a>
+                </div>
+                <div class="card">
+                    <i class="fa-brands fa-facebook-messenger messenger"></i>
+                    <h4>Messenger</h4>
+                    <p>Hossam Thabet</p>
+                    <a href="https://m.me/Hossam Thabet" target="_blank">Send Message</a>
+                </div>
+                <div class="card">
+                    <i class="fa-brands fa-whatsapp whats"></i>
+                    <h4>WhatsApp</h4>
+                    <p>01128794045</p>
+                    <a href="https://wa.me/201128794045" target="_blank">Send Message</a>
                 </div>
             </div>
+            <form action="https://formsubmit.co/jzjdiskwk@gmail.com" method="POST">
+                <input type="text" placeholder='Your Name' name="name" required/>
+                <input type="email" placeholder='Your Email' name="email" required/>
+                <textarea placeholder='Your Message' name="message"></textarea>
+                <button type="submit">Send Message</button>
+            </form>
         </div>
     </section>
     <footer>
@@ -373,8 +404,8 @@
             <p>Copyrights @ <span>Hossam Thabet</span></p>
             <div class="social-icons">
                 <a href="https://www.linkedin.com/in/hossam-thabet-97ab6a371/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61563285180367" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com/hosam_thabet.12/" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="https://github.com/HossamThabet76" target="_blank"><i class="fab fa-github"></i></a>
             </div>
         </div>

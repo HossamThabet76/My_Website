@@ -7,12 +7,26 @@
     scroll-behavior: smooth; 
 }
 :root{
-    --main-color:#3a6cf4;
-    --alt-color:rgb(0, 0, 255);
-    --color-p:#686767;
-    --border-color:#7777777b;
-    --background-color:#250b62;
+    --main-color:#3a6cf4; 
+    --alt-color:blue;
+    --p-color:#ccc;
+    --transition:.7s;
     --main-padding:100px;
+    --bag-dark:#111;
+    --dark:white;
+    --hf:black;
+    --border:#444;
+    --card-bg:black;
+    --shadow:rgba(255, 253, 253, 0.273);
+}
+.white{
+    --bag-dark:#eee;
+    --dark:black;
+    --hf:white;
+    --border:#ccc;
+    --p-color:#666;
+    --card-bg:white;
+    --shadow:rgba(2, 2, 2, 0.452);
 }
 ::-webkit-scrollbar{
     width:15px;
@@ -21,14 +35,31 @@
     background-color: var(--main-color);
 }
 ::-webkit-scrollbar-track{
-    background-color: black;
+    background-color: var(--card-bg);
 }
 .title {
     text-align: center;
     color: var(--main-color);
     font-size: 40px;
     font-weight: bold;
-    margin-bottom: 60px;
+    position: relative;
+    width: fit-content;
+    margin: 0 auto 60px auto;
+}
+.title::after{
+    position: absolute;
+    content: "";
+    width: 40%;
+    height: 3px;
+    background-color: var(--main-color);
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+@media(max-width:430px){
+    .title{
+        font-size: 30px;
+    }
 }
 .container{
     margin-left: auto;
@@ -51,7 +82,7 @@
     }
 }
 header {
-    background-color: white;
+    background-color: var(--hf);
     position: fixed;
     z-index: 999;
     width: 100%;
@@ -64,7 +95,7 @@ header .container{
 }
 header .logo{
     text-decoration: none;
-    color: var(--main-color);
+    color: var(--dark);
     text-transform: uppercase;
     font-weight: bold;
     font-size: 30px;
@@ -74,13 +105,12 @@ header .links .icon{
     display: flex;
     flex-direction: column;
     align-items: start;
-    background-color: white;
     display: none;
 }
 header .links .icon div{
     width: 100%;
     height: 3px;
-    background-color: black;
+    background-color: var(--dark);
 }
 header .links .icon div:nth-child(2){
     transition: .3s;
@@ -97,55 +127,158 @@ header ul{
     gap:50px;
 }
 header ul a{
-    color: var(--main-color);
+    color: var(--dark);
     text-decoration: none;
-    transition: .3s;
+    transition: var(--transition);
+    position: relative;
 }
-header ul a:hover{
-    color: black;
+header ul a:not(.logo):hover{
+    color: var(--main-color);
+}
+header ul a::after{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 3px;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--main-color);
+    display: none;
+}
+.appear::after{
+    display: block;
+}
+header ul a:hover::after{
+    display: block;
+}
+header .buttons{
+    display: flex;
+    gap: 20px;
+}
+header .buttons a{
+    color: var(--dark);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: var(--transition);
+}
+header .buttons a:hover{
+    color: var(--main-color);
+    transform: scale(1.2);
+}
+header ul li{
+    position: relative;
+    left: 200px;
+    animation: a .5s linear forwards;
+    opacity: 0;
+}
+@media (min-width:995px){
+    header ul li:nth-child(1){
+        animation-delay: 4.3s;
+    }
+    header ul li:nth-child(2){
+        animation-delay: 4.6s;
+    }
+    header ul li:nth-child(3){
+        animation-delay: 4.9s;
+    }
+    header ul li:nth-child(4){
+        animation-delay: 5.2s;
+    }
+    header ul li:nth-child(5){
+        animation-delay: 5.5s;
+    }
+    header ul li:nth-child(6){
+        animation-delay: 5.8s;
+    }
+}
+@keyframes a {
+    0%{
+        left: 200px;
+        opacity: 0;
+    }
+    100%{
+        left: 0;
+        opacity: 1;
+    }
+}
+header .buttons a{
+    position: relative;
+    left: 200px;
+    animation: b .5s linear forwards;
+    opacity: 0;
+}
+header .buttons a:nth-child(1){
+    animation-delay: 6.2s;
+}
+header .buttons a:nth-child(2){
+    animation-delay: 6.5s;
+}
+@keyframes b {
+    0%{
+        left: 200px;
+        opacity: 0;
+    }
+    100%{
+        left: 0;
+        opacity: 1;
+    }
 }
 @media (max-width:995px){
+    header .buttons a:nth-child(1){
+        animation-delay: 4.5s;
+    }
+    header .buttons a:nth-child(2){
+        animation-delay: 4.8s;
+    }
+    header .logo{
+        flex: 1;
+    }
     header .links .icon{
         display: block;
         cursor: pointer;
+        margin: 0 20px;
     }
     header .links .active{
         left: 0;
     }
     header .links ul{
         flex-direction: column;
-        background-color: #eee;
-        width:250px;
+        background-color: var(--hf);
+        margin-top: 75px;
+        width:100%;
         height: 100vh;
         position: absolute;
         padding-top: 45px;
         top: 0;
         left: -100%;
         gap: 0;
-        transition: .3s ease-in-out;
+        transition: var(--transition);
         text-align: center;
     }
     header .links ul li a{
-        background-color: #eee;
+        color: var(--dark);
         font-size: 18px;
-        transition: .3s;
+        transition: var(--transition);
         display: block;
         width: fit-content;
         margin: 25px auto;
     }
-    header .links ul a:hover{
-        transform: scale(1.5);
-    }
-}
-@media (max-width:475px){
-    header .links ul{
-        width: 150px;
+    header .links ul a:not(.logo):hover{
+        color: var(--main-color);
     }
 }
 .main {
     width: 100%;
     height: 100vh;
-    background-color:#000016;
+    background-color:var(--bag-dark);
+    overflow: hidden;
 }
 .main .container{
     display: flex;
@@ -154,36 +287,40 @@ header ul a:hover{
 }
 .main .info{
     width: calc(100% - 400px);
+    color: var(--dark);
+}
+.main .info h4{
+    font-size: 1.2em;
 }
 .main .info h2 {
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
+    color: var(--main-color);
+    font-size: 2em;
 }
 .main .info h1 {
     margin-top: 10px;
-    color: var(--main-color);
-    font-size: 50px;
-    font-weight: bold;
+    font-size: 3em;
 }
 .main .info h3 {
-    color: white;
     letter-spacing: .1px;
     margin-top: 10px;
     margin-bottom: 30px;
     margin-left: 0;
 }
+.main .info p{
+    color: var(--dark);
+    margin: 20px 0;
+}
 .main .main-btn {
     color: white;
     background-color: var(--main-color);
     text-decoration: none;
-    font-size: 18px;
+    font-size: 1em;
+    font-weight: 500;
     display: inline-block; 
-    padding: 20px 28px;
+    padding: 1.2em 1.7em;
     letter-spacing: 1px;
-    border-radius: 15px;
-    margin-bottom: 30px;
-    transition: 0.7s ease;
+    border-radius: 1em;
+    transition: var(--transition);
 }
 .main .main-btn:hover {
     background-color: var(--alt-color);
@@ -191,30 +328,55 @@ header ul a:hover{
 }
 .main .social-icons{
     display: flex;
-    gap: 30px;
-    margin-left: 10px;
+    gap: 40px;
+    margin-bottom: 20px;
 }
 .main .social-icons a {
-    color: white;
-    font-size: 20px;
-    transition: .3s;
+    color: var(--dark);
+    font-size: 22px;
+    transition: var(--transition);
 }
 .main .social-icons a:hover{
     color: var(--main-color);
+    transform: scale(1.2);
 }
 .main .image{
     width: 450px;
     height: 450px;
     border-radius: 50%;
     overflow: hidden;
+    background-image: linear-gradient(175deg, transparent 60%,var(--main-color) 60% ),
+    linear-gradient(115deg, transparent 60%,var(--main-color) 60% );
+    text-align: center;
 }
 .main .image img{
-    width: 100%;
+    width: 90%;
+    position: relative;
+}
+.main .image img:hover{
+    animation: c 1.5s linear infinite;
+}
+@keyframes c {
+    0%{
+        left: 0;
+    }
+    25%{
+        left: 10px;
+    }
+    50%{
+        left: 0;
+    }
+    75%{
+        left: -10px;
+    }
+    100%{
+        left: 0;
+    }
 }
 .main .arrow{
     display: none;
 }
-.main .arrow a{
+.main .arrow a,.main .whats a{
     display: block;
     width: 50px;
     height: 50px;
@@ -225,45 +387,136 @@ header ul a:hover{
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    right: 50px;
-    top: 600px;
-    transition: .3s;
+    transition: var(--transition);
 }
-.main .arrow a:hover{
+.main .arrow a:hover,.main .whats a:hover{
     background-color: var(--alt-color);
     transform: scale(1.1);
 }
-.main .arrow a i{
+.main .arrow a i,.main .whats a i{
     font-size: 30px;
     color: white;
 }
-@media (max-width:1300px){
-    .main .arrow a{
-        display: none;
+.main .arrow a{
+    right: 30px;
+    top: 600px;
+    z-index: 100;
+}
+.main .whats a{
+    right: 30px;
+    top: 530px;
+    background-color: rgb(4, 201, 4);
+    z-index: 100;
+}
+.main .whats a:hover{
+    background-color: rgb(0, 255, 0);
+}
+header .logo,
+.main .info h4,
+.main .info h1,
+.main .info h2,
+.main .info p,
+.main .main-btn {
+    position: relative;
+    top:50px;
+    animation: x .5s linear forwards;
+    opacity: 0;
+}
+header .logo{
+    animation-delay: .3s;
+}
+.main .info h4{
+    animation-delay: .7s;
+}
+.main .info h1{
+    animation-delay: 1.1s;
+}
+.main .info h2{
+    animation-delay: 1.5s;
+}
+.main .info p{
+    animation-delay: 1.9s;
+}
+.main .main-btn{
+    animation-delay: 2.3s;
+}
+@keyframes x {
+    0%{
+        top:50px;
+        opacity: 0;
+    }
+    100%{
+        top:0;
+        opacity: 1;
     }
 }
-@media (max-width:1000px){
-    .main .info h1{
-        font-size: 40px;
+.main .social-icons a{
+    position: relative;
+    left: 100px;
+    animation: y .5s linear forwards;
+    opacity: 0;
+}
+.main .social-icons a:nth-child(1){
+    animation-delay: 2.7s;
+}
+.main .social-icons a:nth-child(2){
+    animation-delay: 3s;
+}
+.main .social-icons a:nth-child(3){
+    animation-delay: 3.3s;
+}
+.main .social-icons a:nth-child(4){
+    animation-delay: 3.6s;
+}
+@keyframes y {
+    0%{
+        left: 100px;
+        opacity: 0;
+    }
+    100%{
+        left: 0;
+        opacity: 1;
+    }
+}
+.main .image{
+    transform: scale(25%);
+    animation: z .5s linear forwards;
+    opacity: 0;
+}
+.main .image{
+    animation-delay: 3.9s;
+}
+@keyframes z {
+    0%{
+        transform: scale(25%);
+        opacity: 0;
+    }
+    100%{
+        transform: scale(100%);
+        opacity: 1;
     }
 }
 @media (max-width:995px){
+    body{
+        font-size: 14px;
+    }
     .main{
         padding-top: 30px;
     }
     .main .container{
         flex-direction: column;
         text-align: center;
-        padding-top: 80px;
+        padding-top: 60px;
         justify-content: space-evenly;
     }
     .main .info{
         width: 100%;
     }
     .main .social-icons{
-        gap: 25px;
+        gap: 35px;
         justify-content: center;
         margin: 0;
+        margin-bottom: 20px;
     }
     .main .info h3 {
         letter-spacing: -.5px;
@@ -275,76 +528,28 @@ header ul a:hover{
     }
 }
 @media (max-width:475px){
-    .main .info h2{
-        font-size: 20px;
-    }
-    .main .info h1{
-        font-size: 35px;
-    }
-    .main .info h3{
-        font-size: 15px;
-    }
-    .main .main-btn{
-        padding: 15px 20px;
-        font-size: 10px;
-        border-radius: 10px;
-    }
     .main .social-icons{
-        gap: 20px;
+        gap: 30px;
     }
     .main .social-icons a{
-        font-size: 13px;
-    }
-    .main .image{
-        width: 250px;
-        height: 250px;
+        font-size: 20px;
     }
 }
 @media (max-width:410px){
-    .main .info h2{
-        font-size: 18px;
-    }
-    .main .info h1{
-        font-size: 30px;
-    }
-    .main .info h3{
+    body{
         font-size: 12px;
-    }
-    .main .main-btn{
-        padding: 15px 20px;
-        font-size: 10px;
-    }
-    .main .social-icons{
-        gap: 20px;
-    }
-    .main .social-icons a{
-        font-size: 13px;
-    }
-}
-@media (max-width:355px){
-    .main .info h2{
-        font-size: 15px;
-    }
-    .main .info h1{
-        font-size: 25px;
-    }
-    .main .info h3{
-        font-size: 10px;
-    }
-    .main .main-btn{
-        padding: 14px 18px;
-        font-size: 10px;
-    }
-    .main .social-icons{
-        gap: 18px;
-    }
-    .main .social-icons a{
-        font-size: 13px;
     }
 }
 .about{
     padding-top: var(--main-padding);
     padding-bottom: var(--main-padding);
+    background-color: var(--bag-dark);
+    color: var(--dark);
+    overflow: hidden;
+}
+.about .about-title{
+    transform: scale(0);
+    transition: var(--transition);
 }
 .about .container{
     display: flex;
@@ -352,6 +557,7 @@ header ul a:hover{
 }
 .about .text{
     width: 55%;
+    opacity: 0;
 }
 .about .text h2{
     font-size: 27px;
@@ -361,23 +567,46 @@ header ul a:hover{
     color: var(--main-color);
 }
 .about .text p{
-    color: var(--color-p);
+    color: var(--p-color);
+    line-height: 1.8;
 }
 .about .text p:nth-child(2){
     margin-bottom: 15px;
 }
 .about .info{
     width: 30%;
+    opacity: 0;
 }
 .about .info .line{
-    border-bottom: solid 1px var(--border-color);
+    border-bottom: solid 1px var(--border);
     margin-bottom: 15px;
     padding-bottom: 10px;
 }
 .about .info span{
-    color: var(--color-p);
+    color: var(--p-color);
     font-size: 15px;
     margin-left: 5px;
+    margin-right: 5px;
+}
+@keyframes e {
+    0%{
+        left: -150px;
+        opacity: 0;
+    }
+    100%{
+        left: 0;
+        opacity: 1;
+    }
+}
+@keyframes f {
+    0%{
+        left: 150px;
+        opacity: 0;
+    }
+    100%{
+        left: 0;
+        opacity: 1;
+    }
 }
 @media (max-width:1000px){
     .about .container{
@@ -406,7 +635,12 @@ header ul a:hover{
 .skills{
     padding-top: var(--main-padding);
     padding-bottom: var(--main-padding);
-    background-color: black;
+    background-color: var(--bag-dark);
+    overflow: hidden;
+}
+.skills .skill-title{
+    transform: scale(0);
+    transition: var(--transition);
 }
 .skills .container{
     display: grid;
@@ -414,7 +648,7 @@ header ul a:hover{
     grid-gap:30px;
 }
 .skills .card{
-    background-color: white;
+    background-color: var(--card-bg);
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -422,13 +656,21 @@ header ul a:hover{
     justify-content: space-evenly;
     border-radius: 15px;
     height: 130px;
-    transition: .3s;
+    transition: var(--transition);
+    border: 2px solid var(--border);
+    box-shadow: 0 5px 25px var(--shadow);
+    opacity: 0;
 }
-.skills .card:hover{
-    transform: translateY(-15px);
+.skills .card:hover {
+    transform: scale(1.1);
+    border-color: var(--main-color);
 }
 .skills .card i{
     font-size: 40px;
+    color: var(--dark);
+}
+.skills .card i.react{
+    color: rgb(59, 105, 242);
 }
 .skills .card:first-child i{
     color: red;
@@ -444,7 +686,22 @@ header ul a:hover{
     height: 50px;
 }
 .skills .card h3{
-    color: black;
+    color: var(--dark);
+}
+@keyframes d {
+    0%{
+        left: 100px;
+        opacity: 0;
+    }
+    100%{
+        left: 0;
+        opacity: 1;
+    }
+}
+@media(max-width:1200px){
+    .skills .card:hover {
+        transform: scale(1.05);
+    }
 }
 .content {
     display: flex;
@@ -455,6 +712,12 @@ header ul a:hover{
 .services{
     padding-top: var(--main-padding);
     padding-bottom: var(--main-padding);
+    background-color: var(--bag-dark);
+    overflow: hidden;
+}
+.services .service-title{
+    transform: scale(0);
+    transition: var(--transition);
 }
 .services .container{
     display: grid;
@@ -462,29 +725,21 @@ header ul a:hover{
     grid-gap:30px;
 }
 .services .card {
-    background-color: white;
-    box-shadow: 0 8px 25px rgba(1 1 1 / 15%);
+    background-color: var(--card-bg);
     border-radius: 10px;
     padding: 20px;
     transition: 0.3s;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
-}
-.services .card::before{
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 4px;
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
-    background-color: var(--main-color);
-    transition: .3s;
+    border: 2px solid var(--border);
+    transition: var(--transition);
+    box-shadow: 0 5px 25px var(--shadow);
+    opacity: 0;
 }
 .services .card:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
+    border-color: var(--main-color);
 }
 .services .card:hover::before{
     width: 100%;
@@ -516,16 +771,26 @@ header ul a:hover{
     margin-top: 25px;
 }
 .services .info h3{
-    color: var(--main-color);
+    color: var(--dark);
     margin-bottom: 15px;
 }
 .services .info p{
-    color: var(--color-p);
+    color: var(--p-color);
+}
+@media(max-width:1200px){
+    .services .card:hover {
+        transform: scale(1.05);
+    }
 }
 .projects {
-    background-color: black;
+    background-color: var(--bag-dark);
     padding-top: var(--main-padding);
     padding-bottom: var(--main-padding);
+    overflow: hidden;
+}
+.projects .project-title{
+    transform: scale(0);
+    transition: var(--transition);
 }
 .projects .container{
     display: grid;
@@ -533,14 +798,17 @@ header ul a:hover{
     grid-gap:30px;
 }
 .projects .card {
-    background-color: white;
-    border: 7px solid white;
+    background-color: var(--card-bg);
+    border: 2px solid var(--border);
     overflow: hidden;
     border-radius: 15px;
-    transition: 0.3s ease;
+    transition: var(--transition);
+    box-shadow: 0 5px 25px var(--shadow);
+    opacity: 0;
 }
 .projects .card:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
+    border-color: var(--main-color);
 }
 .projects .image{
     overflow: hidden;
@@ -548,11 +816,11 @@ header ul a:hover{
 .projects .image img{
     width: 100%;
     height: 200px;
-    transition: .3s;
+    transition: var(--transition);
 }
 .projects .card:hover .image img{
     opacity: 0.8;
-    transform: scale(1.05) rotate(2deg);
+    transform: scale(1.1) rotate(2deg);
 }
 .projects .info {
     padding: 20px;
@@ -563,18 +831,19 @@ header ul a:hover{
     font-size: 18px;
     letter-spacing: -.5px;
     font-weight: bold;
+    color: var(--dark);
 }
 .projects .info a{
     text-decoration: none;
     color: var(--main-color);
-    transition: .7s;
+    transition: var(--transition);
     font-weight: bold;
     display: block;
     width: fit-content;
     margin: auto;
 }
 .projects .info a:hover{
-    color: black;
+    color: var(--alt-color);
     transform: scale(1.1);
 }
 .projects .alt-title{
@@ -582,6 +851,8 @@ header ul a:hover{
     color: var(--main-color);
     margin-bottom: 60px;
     position: relative;
+    transform: scale(0);
+    transition: var(--transition);
 }
 .projects .alt-title h3{
     font-size: 25px;
@@ -608,68 +879,135 @@ header ul a:hover{
 .projects .mrg{
     margin-top: 60px;
 }
+@media(max-width:1200px){
+    .projects .card:hover {
+        transform: scale(1.05);
+    }
+}
 .contact{
     padding-top: var(--main-padding);
     padding-bottom: var(--main-padding);
+    background-color: var(--bag-dark);
+    color: var(--dark);
+    overflow: hidden;
+}
+.contact .contact-title{
+    transform: scale(0);
+    transition: var(--transition);
 }
 .contact .container{
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(400px,1fr));
-    grid-gap:30px;
+    grid-template-columns: 1fr 2fr;
+    grid-gap:130px;
+}
+.contact .cards{
+    opacity: 0;
+}
+.contact form{
+    opacity: 0;
 }
 .contact .card{
+    background-color: var(--bag-dark);
     text-align: center;
-    background-color: white;
-    box-shadow: 0 8px 25px rgba(1 1 1 / 15%);
-    border-radius: 15px;
-    padding: 30px 0;
-    transition: .7s;
-    position: relative;
-    z-index: 2;
-}
-.contact .card::before{
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    background-color: #eeeeee8d;
-    transition: .3s;
-    z-index: -1;
+    border-radius: 10px;
+    padding: 15px;
+    transition: var(--transition);
+    margin-bottom: 20px;
+    border: 2px solid var(--border);
+    box-shadow: 0 5px 25px var(--shadow);
 }
 .contact .card:hover{
-    transform: scale(1.05);
+    border-color: var(--main-color);
+    transform: scale(1.1);
 }
-.contact .card:hover::before{
-    width: 100%;
-    height: 100%;
+.contact .card i{
+    font-size: 25px;
+    color: var(--dark);
 }
-.contact .icon{
-    font-size: 80px;
+.contact .card .messenger{
     color: var(--main-color);
 }
-.contact .info h3 {
-    color: black;
-    margin-bottom: 10px;
-    font-weight: bold;
+.contact .card .whats{
+    color: rgb(4, 201, 4);
 }
-.contact .info p {
-    font-size: 20px;
+.contact .card h4{
+    margin: 5px 0;
 }
-@media (max-width:450px){
-    .contact .container{
-        grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+.contact a{
+    margin-top: 15px;
+    color: var(--main-color);
+    display: block;
+    text-decoration: none;
+    transition: var(--transition);
+}
+.contact a:hover{
+    color: var(--alt-color);
+}
+.contact input,textarea{
+    width: 100%;
+    background-color: var(--card-bg);
+    border: 2px solid var(--main-color);
+    outline: none;
+    border-radius: 10px;
+    height: 50px;
+    margin-bottom: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    caret-color: var(--main-color);
+    color: var(--dark);
+}
+.contact input:focus,
+.contact textarea:focus{
+    border: 2px solid var(--alt-color);
+}
+.contact textarea{
+    height: 150px;
+    resize: none;
+    padding: 15px;
+    margin-bottom: 30px;
+}
+.contact form button{
+    background-color: var(--main-color);
+    border-radius: 10px;
+    padding: 13px 18px;
+    transition: var(--transition);
+    color: white;
+    width: fit-content;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+.contact form button:hover{
+    background-color: var(--alt-color);
+    transform: scale(1.1);
+    color: white;
+}
+@media(max-width:1200px){
+    .contact .card:hover {
+        transform: scale(1.02);
     }
-    .contact .title{
-        font-size: 30px;
+}
+@media(max-width:700px){
+    .contact .container{
+        grid-template-columns: 1fr;
+        grid-gap:30px;
+        text-align: center;
+    }
+}
+@media(max-width:500px){
+    .contact form button{
+        margin: auto;
+    }
+    .contact .card:hover {
+        transform: scale(1.05);
     }
 }
 footer {
-    background-color: black;
-    color: white;
+    background-color: var(--hf);
+    color: var(--dark);
     padding: 20px 0;
+    overflow: hidden;
 }
 footer .container{
     display: flex;
@@ -678,6 +1016,7 @@ footer .container{
 footer p{
     font-size: 20px;
     font-weight: 600;
+    opacity: 0;
 }
 footer p span {
     color: var(--main-color);
@@ -689,11 +1028,13 @@ footer .social-icons{
 }
 footer .social-icons a{
     font-size: 20px;
-    color: white;
-    transition: .3s;
+    color: var(--dark);
+    transition: var(--transition);
+    opacity: 0;
 } 
 footer .social-icons a:hover{
     color: var(--main-color);
+    transform: scale(1.2);
 }
 @media (max-width:540px){
     footer .container{
