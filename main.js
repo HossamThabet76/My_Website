@@ -1,20 +1,24 @@
 let menu=document.getElementById('menu');
-let link=document.querySelectorAll('header ul a');
+let links=Array.from(document.querySelectorAll('header ul a'));
+let icon=document.querySelector('.icon');
+let iconX=document.querySelector('.iconX');
+let width=document.getElementById('width');
 function menu_function(){
     menu.classList.toggle('active');
-}
-let width=document.getElementById('width');
-function width_function(){
     width.classList.toggle('width');
 }
-function line(id){
-    for(let i=1;i<=link.length;i++){
-        if(i==id){
-            link[i-1].classList.add('appear')
-        }
-        else{
-            link[i-1].classList.remove('appear')
-        }
+icon.onclick=menu_function;
+iconX.onclick=menu_function;
+for(let i=0;i<links.length;i++){
+    links[i].onclick=function(){
+        menu_function();
+        removeLine();
+        links[i].classList.add('appear')
+    }
+}
+function removeLine(){
+    for(let i=0;i<links.length;i++){
+        links[i].classList.remove('appear');
     }
 }
 let body=document.querySelector('body');
@@ -35,7 +39,7 @@ else{
     night=true;
     localStorage.setItem('night',JSON.stringify(night));
 }
-function dark(){
+moon.onclick=function(){
     if(night){
         body.classList.add('white');
         moon.innerHTML='<i class="fa-regular fa-sun"></i>';
@@ -80,15 +84,16 @@ function arabic(){
     body.style.direction='rtl';
     sun.textContent='AR';
     document.querySelector('header .logo').textContent='حسام'
-    document.getElementById('1').textContent='الرئيسيه'
-    document.getElementById('2').textContent='معلوماتي'
-    document.getElementById('3').textContent='المهارات'
-    document.getElementById('4').textContent='الخدمات'
-    document.getElementById('5').textContent='المشاريع'
-    document.getElementById('6').textContent='تواصل معي'
+    links[0].textContent='الرئيسيه'
+    links[1].textContent='معلوماتي'
+    links[2].textContent='المهارات'
+    links[3].textContent='الخدمات'
+    links[4].textContent='المشاريع'
+    links[5].textContent='تواصل معي'
     document.querySelector('.main h4').textContent='مرحبا, انا'
     document.querySelector('.main h1').textContent='حسام ثابت'
-    document.querySelector('.main h2').textContent='مطور فرونت اند'
+    let job='مطور فرونت اند';
+    writter(job);
     document.querySelector('.main p').textContent='أقوم بإنشاء مواقع إلكترونية عصرية ومتجاوبة'
     document.querySelector('.main .main-btn').textContent='اطلع على أعمالي'
     document.querySelector('.main .whats a').style.left='30px'
@@ -118,45 +123,52 @@ function arabic(){
     document.querySelector('.services .card:nth-child(6) .info h3').textContent='دعم'
     document.querySelector('.services .card:nth-child(6) .info p').textContent='تتوفر خدمة الدعم إذا كنت ترغب في إجراء أي تعديلات على موقعك الإلكتروني بعد تسليمه.'
     document.querySelector('.projects .title').textContent='المشاريع'
-    document.querySelector('.projects .alt-title:nth-child(2) h3').textContent='مشاريع HTML و CSS'
-    document.querySelector('.projects .alt-title:nth-child(4) h3').textContent='مشاريع JavaScript'
-    document.querySelector('.projects .alt-title:nth-child(6) h3').textContent='مشاريع React.js'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(1) .info p').textContent='ليون'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(1) .info a').textContent='زياره المشروع'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(2) .info p').textContent='كاسبار'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(2) .info a').textContent='زياره المشروع'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(3) .info p').textContent='لوحة تحكم متجاوبة'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(3) .info a').textContent='زياره المشروع'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(4) .info p').textContent='افاتار'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(4) .info a').textContent='زياره المشروع'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(5) .info p').textContent='لوحه تحكم'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(5) .info a').textContent='زياره المشروع'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(6) .info p').textContent='قائمة مبتكرة'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(6) .info a').textContent='زياره المشروع'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(1) .info p').textContent='صفحة هبوط إبداعية'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(1) .info a').textContent='زياره المشروع'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(2) .info p').textContent='موقع ويب قابل للتمرير'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(2) .info a').textContent='زياره المشروع'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(3) .info p').textContent='موبايل'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(3) .info a').textContent='زياره المشروع'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(4) .info p').textContent='كردز'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(4) .info a').textContent='زياره المشروع'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(5) .info p').textContent='قائمة المهام'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(5) .info a').textContent='زياره المشروع'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(6) .info p').textContent='تحقق من الإنترنت'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(6) .info a').textContent='زياره المشروع'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(7) .info p').textContent='لعبه XO'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(7) .info a').textContent='زياره المشروع'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(8) .info p').textContent='اله حاسبه'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(8) .info a').textContent='زياره المشروع'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(9) .info p').textContent='السحب والإفلات'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(9) .info a').textContent='زياره المشروع'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(10) .info p').textContent='محرر الصور'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(10) .info a').textContent='زياره المشروع'
-    document.querySelector('.projects .container:nth-child(7) .card:nth-child(1) .info p').textContent='تيك-تاك'
-    document.querySelector('.projects .container:nth-child(7) .card:nth-child(1) .info a').textContent='زياره المشروع'
-    document.querySelector('.projects .container:nth-child(7) .card:nth-child(2) .info p').textContent='معرض أعمال بـ React'
-    document.querySelector('.projects .container:nth-child(7) .card:nth-child(2) .info a').textContent='زياره المشروع'
+    document.querySelector('.projects ul li:nth-child(1)').textContent='احدث المشاريع'
+    document.querySelector('.projects ul li:nth-child(2)').textContent='مشاريع HTML & CSS'
+    document.querySelector('.projects ul li:nth-child(3)').textContent='مشاريع جافاسكريبت'
+    document.querySelector('.projects ul li:nth-child(4)').textContent='مشاريع رياكت'
+    document.querySelector('.projects .container .card:nth-child(1) .info p').textContent='ليون'
+    document.querySelector('.projects .container .card:nth-child(1) .info a').textContent='زياره المشروع'
+    document.querySelector('.projects .container .card:nth-child(2) .info p').textContent='كاسبار'
+    document.querySelector('.projects .container .card:nth-child(2) .info a').textContent='زياره المشروع'
+    document.querySelector('.projects .container .card:nth-child(3) .info p').textContent='لوحة تحكم متجاوبة'
+    document.querySelector('.projects .container .card:nth-child(3) .info a').textContent='زياره المشروع'
+    document.querySelector('.projects .container .card:nth-child(4) .info p').textContent='افاتار'
+    document.querySelector('.projects .container .card:nth-child(4) .info a').textContent='زياره المشروع'
+    document.querySelector('.projects .container .card:nth-child(5) .info p').textContent='لوحه تحكم'
+    document.querySelector('.projects .container .card:nth-child(5) .info a').textContent='زياره المشروع'
+    document.querySelector('.projects .container .card:nth-child(6) .info p').textContent='قائمة مبتكرة'
+    document.querySelector('.projects .container .card:nth-child(6) .info a').textContent='زياره المشروع'
+    document.querySelector('.projects .container .card:nth-child(7) .info p').textContent='صفحة هبوط إبداعية'
+    document.querySelector('.projects .container .card:nth-child(7) .info a').textContent='زياره المشروع'
+    document.querySelector('.projects .container .card:nth-child(8) .info p').textContent='موقع ويب قابل للتمرير'
+    document.querySelector('.projects .container .card:nth-child(8) .info a').textContent='زياره المشروع'
+    document.querySelector('.projects .container .card:nth-child(9) .info p').textContent='موبايل'
+    document.querySelector('.projects .container .card:nth-child(9) .info a').textContent='زياره المشروع'
+    document.querySelector('.projects .container .card:nth-child(10) .info p').textContent='كردز'
+    document.querySelector('.projects .container .card:nth-child(10) .info a').textContent='زياره المشروع'
+    document.querySelector('.projects .container .card:nth-child(11) .info p').textContent='قائمة المهام'
+    document.querySelector('.projects .container .card:nth-child(11) .info a').textContent='زياره المشروع'
+    document.querySelector('.projects .container .card:nth-child(12) .info p').textContent='تحقق من الإنترنت'
+    document.querySelector('.projects .container .card:nth-child(12) .info a').textContent='زياره المشروع'
+    document.querySelector('.projects .container .card:nth-child(13) .info p').textContent='لعبه XO'
+    document.querySelector('.projects .container .card:nth-child(13) .info a').textContent='زياره المشروع'
+    document.querySelector('.projects .container .card:nth-child(14) .info p').textContent='اله حاسبه'
+    document.querySelector('.projects .container .card:nth-child(14) .info a').textContent='زياره المشروع'
+    document.querySelector('.projects .container .card:nth-child(15) .info p').textContent='السحب والإفلات'
+    document.querySelector('.projects .container .card:nth-child(15) .info a').textContent='زياره المشروع'
+    document.querySelector('.projects .container .card:nth-child(16) .info p').textContent='محرر الصور'
+    document.querySelector('.projects .container .card:nth-child(16) .info a').textContent='زياره المشروع'
+    document.querySelector('.projects .container .card:nth-child(17) .info p').textContent='شريط تمرير الصور'
+    document.querySelector('.projects .container .card:nth-child(17) .info a').textContent='زياره المشروع'
+    document.querySelector('.projects .container .card:nth-child(18) .info p').textContent='سرعه الكتابه'
+    document.querySelector('.projects .container .card:nth-child(18) .info a').textContent='زياره المشروع'
+    document.querySelector('.projects .container .card:nth-child(19) .info p').textContent='تيك-تاك'
+    document.querySelector('.projects .container .card:nth-child(19) .info a').textContent='زياره المشروع'
+    document.querySelector('.projects .container .card:nth-child(20) .info p').textContent='معرض أعمال بـ React'
+    document.querySelector('.projects .container .card:nth-child(20) .info a').textContent='زياره المشروع'
+    document.querySelector('.projects .container .card:nth-child(21) .info p').textContent='فورم ب رياكت'
+    document.querySelector('.projects .container .card:nth-child(21) .info a').textContent='زياره المشروع'
     document.querySelector('.contact .title').textContent='لِنعمل معاً'
     document.querySelector('.contact .cards .card:nth-child(1) h4').textContent='الايميل'
     document.querySelector('.contact .cards .card:nth-child(1) a').textContent='ارسل رسالة'
@@ -179,15 +191,16 @@ function english(){
     body.style.direction='ltr';
     sun.textContent='EN';
     document.querySelector('header .logo').textContent='Hossam'
-    document.getElementById('1').textContent='Home'
-    document.getElementById('2').textContent='About'
-    document.getElementById('3').textContent='Skills'
-    document.getElementById('4').textContent='Services'
-    document.getElementById('5').textContent='Projects'
-    document.getElementById('6').textContent='Contact'
+    links[0].textContent='Home'
+    links[1].textContent='About'
+    links[2].textContent='Skills'
+    links[3].textContent='Services'
+    links[4].textContent='Projects'
+    links[5].textContent='Contact'
     document.querySelector('.main h4').textContent=`Hello,I'm`
     document.querySelector('.main h1').textContent='Hossam Thabet'
-    document.querySelector('.main h2').textContent='Front End Developer'
+    let job='Front End Developer';
+    writter(job);
     document.querySelector('.main p').textContent='I Build Modern & Responsive Websites.'
     document.querySelector('.main .main-btn').textContent='View my work'
     document.querySelector('.main .whats a').style.left='auto'
@@ -217,45 +230,52 @@ function english(){
     document.querySelector('.services .card:nth-child(6) .info h3').textContent='Support'
     document.querySelector('.services .card:nth-child(6) .info p').textContent='Support is available if you wanna make any changes for your website after dilvering it.'
     document.querySelector('.projects .title').textContent='Projects'
-    document.querySelector('.projects .alt-title:nth-child(2) h3').textContent='HTML & CSS Projects'
-    document.querySelector('.projects .alt-title:nth-child(4) h3').textContent='JavaScript Projects'
-    document.querySelector('.projects .alt-title:nth-child(6) h3').textContent='React.JS Projects'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(1) .info p').textContent='Leon'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(1) .info a').textContent='Visit Project'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(2) .info p').textContent='Kasper'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(2) .info a').textContent='Visit Project'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(3) .info p').textContent='Responsive Dashboard'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(3) .info a').textContent='Visit Project'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(4) .info p').textContent='Avadar'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(4) .info a').textContent='Visit Project'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(5) .info p').textContent='Dashboard'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(5) .info a').textContent='Visit Project'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(6) .info p').textContent='Creative Menu'
-    document.querySelector('.projects .container:nth-child(3) .card:nth-child(6) .info a').textContent='Visit Project'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(1) .info p').textContent='Creative Landing Page'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(1) .info a').textContent='Visit Project'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(2) .info p').textContent='Scrolling Website'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(2) .info a').textContent='Visit Project'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(3) .info p').textContent='Phone'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(3) .info a').textContent='Visit Project'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(4) .info p').textContent='CRUDS'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(4) .info a').textContent='Visit Project'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(5) .info p').textContent='To-Do-List'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(5) .info a').textContent='Visit Project'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(6) .info p').textContent='Check Internet'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(6) .info a').textContent='Visit Project'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(7) .info p').textContent='XO Game'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(7) .info a').textContent='Visit Project'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(8) .info p').textContent='Calculator'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(8) .info a').textContent='Visit Project'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(9) .info p').textContent='Drag & Drop'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(9) .info a').textContent='Visit Project'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(10) .info p').textContent='Image Editor'
-    document.querySelector('.projects .container:nth-child(5) .card:nth-child(10) .info a').textContent='Visit Project'
-    document.querySelector('.projects .container:nth-child(7) .card:nth-child(1) .info p').textContent='Tic-Tac'
-    document.querySelector('.projects .container:nth-child(7) .card:nth-child(1) .info a').textContent='Visit Project'
-    document.querySelector('.projects .container:nth-child(7) .card:nth-child(2) .info p').textContent='Portfolio React'
-    document.querySelector('.projects .container:nth-child(7) .card:nth-child(2) .info a').textContent='Visit Project'
+    document.querySelector('.projects ul li:nth-child(1)').textContent='Latest Projects'
+    document.querySelector('.projects ul li:nth-child(2)').textContent='HTML & CSS Projects'
+    document.querySelector('.projects ul li:nth-child(3)').textContent='JavaScript Projects'
+    document.querySelector('.projects ul li:nth-child(4)').textContent='React.JS Projects'
+    document.querySelector('.projects .container .card:nth-child(1) .info p').textContent='Leon'
+    document.querySelector('.projects .container .card:nth-child(1) .info a').textContent='Visit Project'
+    document.querySelector('.projects .container .card:nth-child(2) .info p').textContent='Kasper'
+    document.querySelector('.projects .container .card:nth-child(2) .info a').textContent='Visit Project'
+    document.querySelector('.projects .container .card:nth-child(3) .info p').textContent='Responsive Dashboard'
+    document.querySelector('.projects .container .card:nth-child(3) .info a').textContent='Visit Project'
+    document.querySelector('.projects .container .card:nth-child(4) .info p').textContent='Avadar'
+    document.querySelector('.projects .container .card:nth-child(4) .info a').textContent='Visit Project'
+    document.querySelector('.projects .container .card:nth-child(5) .info p').textContent='Dashboard'
+    document.querySelector('.projects .container .card:nth-child(5) .info a').textContent='Visit Project'
+    document.querySelector('.projects .container .card:nth-child(6) .info p').textContent='Creative Menu'
+    document.querySelector('.projects .container .card:nth-child(6) .info a').textContent='Visit Project'
+    document.querySelector('.projects .container .card:nth-child(7) .info p').textContent='Creative Landing Page'
+    document.querySelector('.projects .container .card:nth-child(7) .info a').textContent='Visit Project'
+    document.querySelector('.projects .container .card:nth-child(8) .info p').textContent='Scrolling Website'
+    document.querySelector('.projects .container .card:nth-child(8) .info a').textContent='Visit Project'
+    document.querySelector('.projects .container .card:nth-child(9) .info p').textContent='Phone'
+    document.querySelector('.projects .container .card:nth-child(9) .info a').textContent='Visit Project'
+    document.querySelector('.projects .container .card:nth-child(10) .info p').textContent='CRUDS'
+    document.querySelector('.projects .container .card:nth-child(10) .info a').textContent='Visit Project'
+    document.querySelector('.projects .container .card:nth-child(11) .info p').textContent='To-Do-List'
+    document.querySelector('.projects .container .card:nth-child(11) .info a').textContent='Visit Project'
+    document.querySelector('.projects .container .card:nth-child(12) .info p').textContent='Check Internet'
+    document.querySelector('.projects .container .card:nth-child(12) .info a').textContent='Visit Project'
+    document.querySelector('.projects .container .card:nth-child(13) .info p').textContent='XO Game'
+    document.querySelector('.projects .container .card:nth-child(13) .info a').textContent='Visit Project'
+    document.querySelector('.projects .container .card:nth-child(14) .info p').textContent='Calculator'
+    document.querySelector('.projects .container .card:nth-child(14) .info a').textContent='Visit Project'
+    document.querySelector('.projects .container .card:nth-child(15) .info p').textContent='Drag & Drop'
+    document.querySelector('.projects .container .card:nth-child(15) .info a').textContent='Visit Project'
+    document.querySelector('.projects .container .card:nth-child(16) .info p').textContent='Image Editor'
+    document.querySelector('.projects .container .card:nth-child(16) .info a').textContent='Visit Project'
+    document.querySelector('.projects .container .card:nth-child(17) .info p').textContent='Image Slider'
+    document.querySelector('.projects .container .card:nth-child(17) .info a').textContent='Visit Project'
+    document.querySelector('.projects .container .card:nth-child(18) .info p').textContent='Typing Speed'
+    document.querySelector('.projects .container .card:nth-child(18) .info a').textContent='Visit Project'
+    document.querySelector('.projects .container .card:nth-child(19) .info p').textContent='Tic-Tac'
+    document.querySelector('.projects .container .card:nth-child(19) .info a').textContent='Visit Project'
+    document.querySelector('.projects .container .card:nth-child(20) .info p').textContent='Portfolio React'
+    document.querySelector('.projects .container .card:nth-child(20) .info a').textContent='Visit Project'
+    document.querySelector('.projects .container .card:nth-child(21) .info p').textContent='Form React'
+    document.querySelector('.projects .container .card:nth-child(21) .info a').textContent='Visit Project'
     document.querySelector('.contact .title').textContent=`Let's work together`
     document.querySelector('.contact .cards .card:nth-child(1) h4').textContent='Email'
     document.querySelector('.contact .cards .card:nth-child(1) a').textContent='Send Message'
@@ -288,12 +308,12 @@ let formContact=document.querySelector('.contact form');
 let skill_title=document.querySelector('.skills .skill-title');
 let service_title=document.querySelector('.services .service-title');
 let project_title=document.querySelector('.projects .project-title');
-let project_title_alt=document.querySelectorAll('.projects .alt-title');
 let about_title=document.querySelector('.about .about-title');
 let contact_title=document.querySelector('.contact .contact-title');
 let skill=document.querySelectorAll('.skills .card');
 let service=document.querySelectorAll('.services .card');
 let project=document.querySelectorAll('.projects .card');
+let ul=document.querySelector('.projects ul');
 let arrow=document.getElementById('arrow');
 onscroll=function(){
     if(scrollY>175){
@@ -305,82 +325,116 @@ onscroll=function(){
     if(scrollY>=sectionAbout.offsetTop - 600){
         about_title.style.transform='scale(1)';
         textAbout.style.cssText=`
-            position: relative;
-            left: -150px;
-            animation: e .5s linear forwards;
-            opacity: 0;`
+            animation: e .5s linear forwards;`
         infoAbout.style.cssText=`
-            position: relative;
-            left: 150px;
-            animation: f .5s linear forwards;
-            opacity: 0;`
+            animation: f .5s linear forwards;`
     }
     if(scrollY>=sectionSkills.offsetTop - 600){
         skill_title.style.transform='scale(1)';
         for(let i=0;i<skill.length;i++){
             skill[i].style.cssText=`
-                position: relative;
-                left: 100px;
-                animation: d .5s linear forwards;
-                opacity: 0;
-                animation-delay: ${i/3}s;`
+                transform:scale(1)`
         }
     }
     if(scrollY>=sectionService.offsetTop - 600){
         service_title.style.transform='scale(1)';
         for(let i=0;i<service.length;i++){
             service[i].style.cssText=`
-                position: relative;
-                left: 100px;
-                animation: d .5s linear forwards;
-                opacity: 0;
-                animation-delay: ${i/3}s;`
+                transform:scale(1)`
         }
     }
     if(scrollY>=sectionProjects.offsetTop - 600){
         project_title.style.transform='scale(1)';
-        project_title_alt[0].style.transform='scale(1)';
+        ul.style.transform='scale(1)';
         for(let i=0;i<project.length;i++){
             project[i].style.cssText=`
-                position: relative;
-                left: 100px;
-                animation: d .5s linear forwards;
-                opacity: 0;
-                animation-delay: ${i/3}s;`
+                transform:scale(1)`
         }
-    }
-    if(scrollY>=3600){
-        project_title_alt[1].style.transform='scale(1)';
-    }
-    if(scrollY>=5000){
-        project_title_alt[2].style.transform='scale(1)';
     }
     if(scrollY>=sectionContact.offsetTop - 600){
         contact_title.style.transform='scale(1)';
         cardsContact.style.cssText=`
-            position: relative;
-            left: -150px;
-            animation: e .5s linear forwards;
-            opacity: 0;`
+            animation: e .5s linear forwards;`
         formContact.style.cssText=`
-            position: relative;
-            left: 150px;
-            animation: f .5s linear forwards;
-            opacity: 0;`
+            animation: f .5s linear forwards;`
     }
     if(scrollY>=sectionFooter.offsetTop - 800){
         pFooter.style.cssText=`
-            position: relative;
-            left: -150px;
-            animation: e .5s linear forwards;
-            opacity: 0;`
+            animation: e .5s linear forwards;`
         for(let i=0;i<iconsFooter.length;i++){
             iconsFooter[i].style.cssText=`
-                position: relative;
-                left: 150px;
                 animation: f .5s linear forwards;
-                opacity: 0;
-                animation-delay:${i/3}s`
+                animation-delay:${i/2}s`
         }
     }
 }
+let titles=document.querySelectorAll('.projects ul li');
+let allCards=document.querySelectorAll('.container .card');
+let notLatCards=document.querySelectorAll('.container .notLat');
+let htmlCards=document.querySelectorAll('.container .html-card');
+let jsCards=document.querySelectorAll('.container .js-card');
+let reactCards=document.querySelectorAll('.container .react-card');
+titles[0].onclick=function(){
+    remove();
+    this.classList.add('active');
+    notLatCards.forEach(notLat=>{
+        notLat.classList.add('hide');
+    })
+}
+titles[1].onclick=function(){
+    remove();
+    this.classList.add('active');
+    main(jsCards,reactCards);
+}
+titles[2].onclick=function(){
+    remove();
+    this.classList.add('active');
+    main(htmlCards,reactCards);
+}
+titles[3].onclick=function(){
+    remove();
+    this.classList.add('active');
+    main(htmlCards,jsCards);
+}
+function main(param1,param2){
+    param1.forEach(param1=>{
+        param1.classList.add('hide');
+    })
+    param2.forEach(param2=>{
+        param2.classList.add('hide');
+    })
+}
+function remove(){
+    titles.forEach(title=>{
+        title.classList.remove('active');
+    })
+    allCards.forEach(all=>{
+        all.classList.remove('hide');
+    })
+    notLatCards.forEach(notLat=>{
+        notLat.classList.remove('notLat');
+    })
+}  
+function writter(job){
+    document.querySelector('.main h2').textContent='';
+    let i=0;
+    setTimeout(()=>{
+        let x=setInterval(()=>{
+            document.querySelector('.main h2').textContent+=job[i];
+            i++;
+            if(i==job.length){
+                clearInterval(x);
+            }
+        },100)
+    },2300)
+    setTimeout(()=>{
+        document.querySelector('.main h2').style.cssText=`
+            border-right: 3px solid var(--main-color);
+        `
+    },1800)
+    setTimeout(()=>{
+        document.querySelector('.main h2').style.cssText=`
+            border-right: transparent;
+        `
+    },4500)
+} 

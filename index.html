@@ -13,23 +13,26 @@
         <div class="container">
             <a href="#" class="logo">Hossam</a>
             <div class="links">
-                <div class="icon" onclick="menu_function(),width_function()">
+                <div class="icon">
                     <div></div>
                     <div id="width" class="width"></div>
                     <div></div>
                 </div>
                 <ul id="menu">
-                    <li><a href="#home" onclick="menu_function() ,line(this.id)" id="1" class="appear">Home</a></li>
-                    <li><a href="#about" onclick="menu_function() ,line(this.id)" id="2">About</a></li>
-                    <li><a href="#skills" onclick="menu_function() ,line(this.id)" id="3">Skills</a></li>
-                    <li><a href="#services" onclick="menu_function() ,line(this.id)" id="4">Services</a></li>
-                    <li><a href="#projects" onclick="menu_function() ,line(this.id)" id="5">Projects</a></li>
-                    <li><a href="#contact" onclick="menu_function() ,line(this.id)" id="6">Contact</a></li>
+                    <div class="iconX">
+                        <i class="fa-solid fa-x"></i>
+                    </div>
+                    <li><a href="#home" class="appear">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
             <div class="buttons">
-                <a href="#" id="moon" onclick="dark()"><i class="fa-solid fa-moon"></i></a>
-                <a href="#" id="sun" onclick="lan2()">EN</a>
+                <a href="#" id="moon"><i class="fa-solid fa-moon"></i></a>
+                <a href="#" id="sun">EN</a>
             </div>
         </div>
     </header>
@@ -38,7 +41,7 @@
             <div class=info>
                 <h4>Hello, I,m</h4>
                 <h1>Hossam Thabet</h1>
-                <h2>Front End Developer</h2>
+                <h2></h2>
                 <p>I Build Modern & Responsive Websites.</p>
                 <div class="social-icons">
                     <a href="https://www.linkedin.com/in/hossam-thabet-97ab6a371/" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -139,6 +142,10 @@
                 <img src="images/tailwindcss.svg" alt="taiwind">
                 <h3>TailwindCSS</h3>
             </div>
+            <div class="card">
+                <img src="images/es6.png" alt="ES6">
+                <h3>ES6</h3>
+            </div>
         </div>
     </section>
     <section class="services" id="services">
@@ -190,11 +197,14 @@
     </section>
     <section class="projects" id="projects">
         <h2 class="title project-title">Projects</h2>
-        <div class="alt-title">
-            <h3>HTML & CSS Projects</h3>
-        </div>
+        <ul>
+            <li class="active">Latest Projects</li>
+            <li>HTML & CSS Projects</li>
+            <li>JavaScript Projects</li>
+            <li>React.JS Projects</li>
+        </ul>
         <div class="container">
-            <div class="card">
+            <div class="card html-card notLat">
                 <div class="image">
                     <img src="images/k.png" />
                 </div>
@@ -203,7 +213,7 @@
                     <a href="https://hossamthabet76.github.io/HTML_And_CSS_Project_One/" target="_blank">Visit Project</a>
                 </div>
             </div>
-            <div class="card">
+            <div class="card html-card notLat">
                 <div class="image">
                     <img src="images/project2.png" />
                 </div>
@@ -212,7 +222,7 @@
                     <a href="https://hossamthabet76.github.io/HTML_And_CSS_Project_Two/" target="_blank">Visit Project</a>
                 </div>
             </div>
-            <div class="card">
+            <div class="card html-card">
                 <div class="image">
                     <img src="images/6.jpg" />
                 </div>
@@ -221,7 +231,7 @@
                     <a href="https://hossamthabet76.github.io/HTML_And_CSS_Project_Three/" target="_blank">Visit Project</a>
                 </div>
             </div>
-            <div class="card">
+            <div class="card html-card notLat">
                 <div class="image">
                     <img src="images/project 4.png"/>
                 </div>
@@ -230,7 +240,7 @@
                     <a href="https://hossamthabet76.github.io/HTML_And_CSS_Project_Four/" target="_blank">Visit Project</a>
                 </div>
             </div>
-            <div class="card">
+            <div class="card html-card">
                 <div class="image">
                     <img src="images/dashboard.png" />
                 </div>
@@ -239,7 +249,7 @@
                     <a href="https://hossamthabet76.github.io/HTML_And_CSS_Project_Six/" target="_blank">Visit Project</a>
                 </div>
             </div>
-            <div class="card">
+            <div class="card html-card">
                 <div class="image">
                     <img src="images/menu.png" />
                 </div>
@@ -248,12 +258,7 @@
                     <a href="https://hossamthabet76.github.io/Creative-Menu/" target="_blank">Visit Project</a>
                 </div>
             </div>
-        </div>
-        <div class="alt-title mrg">
-            <h3>JavaScript Projects</h3>
-        </div>
-        <div class="container">
-            <div class="card">
+            <div class="card js-card notLat">
                 <div class="image">
                     <img src="images/project 5.png" />
                 </div>
@@ -262,7 +267,7 @@
                     <a href="https://hossamthabet76.github.io/HTML_And_CSS_Project_Five/" target="_blank">Visit Project</a>
                 </div>
             </div>
-            <div class="card">
+            <div class="card js-card notLat">
                 <div class="image">
                     <img src="images/project 6.jpeg" />
                 </div>
@@ -271,7 +276,7 @@
                     <a href="https://hossamthabet76.github.io/HTML_And_CSS_And_JavaScript_Project_One/" target="_blank">Visit Project</a>
                 </div>
             </div>
-            <div class="card">
+            <div class="card js-card notLat">
                 <div class="image">
                     <img src="images/phone.png" />
                 </div>
@@ -280,7 +285,7 @@
                     <a href="https://hossamthabet76.github.io/Phone/" target="_blank">Visit Project</a>
                 </div>
             </div>
-            <div class="card">
+            <div class="card js-card">
                 <div class="image">
                     <img src="images/cruds.png" />
                 </div>
@@ -289,7 +294,7 @@
                     <a href="https://hossamthabet76.github.io/CRUDS/" target="_blank">Visit Project</a>
                 </div>
             </div>
-            <div class="card">
+            <div class="card js-card">
                 <div class="image">
                     <img src="images/to-do-list.png" />
                 </div>
@@ -298,7 +303,7 @@
                     <a href="https://hossamthabet76.github.io/To-Do-List/" target="_blank">Visit Project</a>
                 </div>
             </div>
-            <div class="card">
+            <div class="card js-card notLat">
                 <div class="image">
                     <img src="images/internet.png" />
                 </div>
@@ -307,7 +312,7 @@
                     <a href="https://hossamthabet76.github.io/Check-Internet/" target="_blank">Visit Project</a>
                 </div>
             </div>
-            <div class="card">
+            <div class="card js-card notLat">
                 <div class="image">
                     <img src="images/XO.png" />
                 </div>
@@ -316,7 +321,7 @@
                     <a href="https://hossamthabet76.github.io/X-O-Game/" target="_blank">Visit Project</a>
                 </div>
             </div>
-            <div class="card">
+            <div class="card js-card notLat">
                 <div class="image">
                     <img src="images/cal3.png" />
                 </div>
@@ -325,7 +330,7 @@
                     <a href="https://hossamthabet76.github.io/Calculator/" target="_blank">Visit Project</a>
                 </div>
             </div>
-            <div class="card">
+            <div class="card js-card notLat">
                 <div class="image">
                     <img src="images/drag.png" />
                 </div>
@@ -334,7 +339,7 @@
                     <a href="https://hossamthabet76.github.io/Drag-Drop/" target="_blank">Visit Project</a>
                 </div>
             </div>
-            <div class="card">
+            <div class="card js-card notLat">
                 <div class="image">
                     <img src="images/editor.png" />
                 </div>
@@ -343,12 +348,25 @@
                     <a href="https://hossamthabet76.github.io/Image-Editor/" target="_blank">Visit Project</a>
                 </div>
             </div>
-        </div>
-        <div class="alt-title mrg">
-            <h3>React.JS Projects</h3>
-        </div>
-        <div class="container">
-            <div class="card">
+            <div class="card js-card notLat">
+                <div class="image">
+                    <img src="images/slider.png" />
+                </div>
+                <div class="info">
+                    <p>Image Slider</p>
+                    <a href="https://hossamthabet76.github.io/image-slider/" target="_blank">Visit Project</a>
+                </div>
+            </div>
+            <div class="card js-card">
+                <div class="image">
+                    <img src="images/typing.png" />
+                </div>
+                <div class="info">
+                    <p>Typing Speed</p>
+                    <a href="https://hossamthabet76.github.io/typing-speed/" target="_blank">Visit Project</a>
+                </div>
+            </div>
+            <div class="card react-card">
                 <div class="image">
                     <img src="images/tic-tac.png" />
                 </div>
@@ -357,13 +375,22 @@
                     <a href="https://hossamthabet76.github.io/tic-tac/" target="_blank">Visit Project</a>
                 </div>
             </div>
-            <div class="card">
+            <div class="card react-card">
                 <div class="image">
                     <img src="images/port-react.png" />
                 </div>
                 <div class="info">
                     <p>Portfolio React</p>
                     <a href="https://hossamthabet76.github.io/portfolio_react/" target="_blank">Visit Project</a>
+                </div>
+            </div>
+            <div class="card react-card">
+                <div class="image">
+                    <img src="images/form.png" />
+                </div>
+                <div class="info">
+                    <p>Form React</p>
+                    <a href="https://hossamthabet76.github.io/Form-React/" target="_blank">Visit Project</a>
                 </div>
             </div>
         </div>
@@ -392,7 +419,7 @@
                 </div>
             </div>
             <form action="https://formsubmit.co/jzjdiskwk@gmail.com" method="POST">
-                <input type="text" placeholder='Your Name' name="name" required/>
+                <input id="text" type="text" placeholder='Your Name' name="name" required/>
                 <input type="email" placeholder='Your Email' name="email" required/>
                 <textarea placeholder='Your Message' name="message"></textarea>
                 <button type="submit">Send Message</button>

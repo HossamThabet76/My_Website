@@ -34,6 +34,9 @@
 ::-webkit-scrollbar-thumb{
     background-color: var(--main-color);
 }
+::-webkit-scrollbar-thumb:hover{
+    background-color: var(--alt-color);
+}
 ::-webkit-scrollbar-track{
     background-color: var(--card-bg);
 }
@@ -152,6 +155,20 @@ header ul a::after{
 header ul a:hover::after{
     display: block;
 }
+header ul .iconX{
+    color: var(--dark);
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+header ul .iconX:hover{
+    color: var(--main-color);
+    transform: scale(1.3);
+}
 header .buttons{
     display: flex;
     gap: 20px;
@@ -179,23 +196,23 @@ header ul li{
     opacity: 0;
 }
 @media (min-width:995px){
-    header ul li:nth-child(1){
-        animation-delay: 4.3s;
-    }
     header ul li:nth-child(2){
-        animation-delay: 4.6s;
+        animation-delay: 6.2s;
     }
     header ul li:nth-child(3){
-        animation-delay: 4.9s;
+        animation-delay: 6.4s;
     }
     header ul li:nth-child(4){
-        animation-delay: 5.2s;
+        animation-delay: 6.7s;
     }
     header ul li:nth-child(5){
-        animation-delay: 5.5s;
+        animation-delay: 7s;
     }
     header ul li:nth-child(6){
-        animation-delay: 5.8s;
+        animation-delay: 7.3s;
+    }
+    header ul li:nth-child(7){
+        animation-delay: 7.6s;
     }
 }
 @keyframes a {
@@ -215,10 +232,10 @@ header .buttons a{
     opacity: 0;
 }
 header .buttons a:nth-child(1){
-    animation-delay: 6.2s;
+    animation-delay: 8s;
 }
 header .buttons a:nth-child(2){
-    animation-delay: 6.5s;
+    animation-delay: 8.3s;
 }
 @keyframes b {
     0%{
@@ -232,10 +249,10 @@ header .buttons a:nth-child(2){
 }
 @media (max-width:995px){
     header .buttons a:nth-child(1){
-        animation-delay: 4.5s;
+        animation-delay: 6s;
     }
     header .buttons a:nth-child(2){
-        animation-delay: 4.8s;
+        animation-delay: 6.3s;
     }
     header .logo{
         flex: 1;
@@ -252,7 +269,7 @@ header .buttons a:nth-child(2){
         flex-direction: column;
         background-color: var(--hf);
         margin-top: 75px;
-        width:100%;
+        width:50%;
         height: 100vh;
         position: absolute;
         padding-top: 45px;
@@ -272,6 +289,9 @@ header .buttons a:nth-child(2){
     }
     header .links ul a:not(.logo):hover{
         color: var(--main-color);
+    }
+    header ul .iconX{
+        display: block;
     }
 }
 .main {
@@ -295,6 +315,12 @@ header .buttons a:nth-child(2){
 .main .info h2 {
     color: var(--main-color);
     font-size: 2em;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    animation: cursor .3s linear infinite;
+    width: fit-content;
+    padding-right: 2px;
 }
 .main .info h1 {
     margin-top: 10px;
@@ -305,6 +331,14 @@ header .buttons a:nth-child(2){
     margin-top: 10px;
     margin-bottom: 30px;
     margin-left: 0;
+}
+@keyframes cursor {
+    from{
+        border-color: var(--main-color);
+    }
+    to{
+        border-color: transparent;
+    }
 }
 .main .info p{
     color: var(--dark);
@@ -414,7 +448,6 @@ header .buttons a:nth-child(2){
 header .logo,
 .main .info h4,
 .main .info h1,
-.main .info h2,
 .main .info p,
 .main .main-btn {
     position: relative;
@@ -431,14 +464,11 @@ header .logo{
 .main .info h1{
     animation-delay: 1.1s;
 }
-.main .info h2{
+.main .info p{
     animation-delay: 1.5s;
 }
-.main .info p{
-    animation-delay: 1.9s;
-}
 .main .main-btn{
-    animation-delay: 2.3s;
+    animation-delay: 1.9s;
 }
 @keyframes x {
     0%{
@@ -457,16 +487,16 @@ header .logo{
     opacity: 0;
 }
 .main .social-icons a:nth-child(1){
-    animation-delay: 2.7s;
+    animation-delay: 4.5s;
 }
 .main .social-icons a:nth-child(2){
-    animation-delay: 3s;
+    animation-delay: 4.8s;
 }
 .main .social-icons a:nth-child(3){
-    animation-delay: 3.3s;
+    animation-delay: 5.1s;
 }
 .main .social-icons a:nth-child(4){
-    animation-delay: 3.6s;
+    animation-delay: 5.4s;
 }
 @keyframes y {
     0%{
@@ -484,7 +514,7 @@ header .logo{
     opacity: 0;
 }
 .main .image{
-    animation-delay: 3.9s;
+    animation-delay: 5.8s;
 }
 @keyframes z {
     0%{
@@ -518,6 +548,10 @@ header .logo{
         margin: 0;
         margin-bottom: 20px;
     }
+    .main .info h2 {
+        margin-left: auto;
+        margin-right: auto;
+    }
     .main .info h3 {
         letter-spacing: -.5px;
     }
@@ -549,7 +583,7 @@ header .logo{
 }
 .about .about-title{
     transform: scale(0);
-    transition: var(--transition);
+    transition: 1s;
 }
 .about .container{
     display: flex;
@@ -558,6 +592,8 @@ header .logo{
 .about .text{
     width: 55%;
     opacity: 0;
+    position: relative;
+    left: -150px;
 }
 .about .text h2{
     font-size: 27px;
@@ -576,6 +612,8 @@ header .logo{
 .about .info{
     width: 30%;
     opacity: 0;
+    position: relative;
+    left: -150px;
 }
 .about .info .line{
     border-bottom: solid 1px var(--border);
@@ -640,12 +678,13 @@ header .logo{
 }
 .skills .skill-title{
     transform: scale(0);
-    transition: var(--transition);
+    transition: 1s;
 }
 .skills .container{
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
     grid-gap:30px;
+    justify-content: end;
 }
 .skills .card{
     background-color: var(--card-bg);
@@ -657,20 +696,21 @@ header .logo{
     border-radius: 15px;
     height: 130px;
     transition: var(--transition);
-    border: 2px solid var(--border);
+    border: 3px solid var(--border);
     box-shadow: 0 5px 25px var(--shadow);
-    opacity: 0;
+    position: relative;
+    transform: scale(0);
 }
 .skills .card:hover {
-    transform: scale(1.1);
     border-color: var(--main-color);
+    transform: scale(1.1) !important;
 }
 .skills .card i{
     font-size: 40px;
     color: var(--dark);
 }
 .skills .card i.react{
-    color: rgb(59, 105, 242);
+    color: #0089f9;
 }
 .skills .card:first-child i{
     color: red;
@@ -688,21 +728,6 @@ header .logo{
 .skills .card h3{
     color: var(--dark);
 }
-@keyframes d {
-    0%{
-        left: 100px;
-        opacity: 0;
-    }
-    100%{
-        left: 0;
-        opacity: 1;
-    }
-}
-@media(max-width:1200px){
-    .skills .card:hover {
-        transform: scale(1.05);
-    }
-}
 .content {
     display: flex;
     justify-content: center;
@@ -717,7 +742,7 @@ header .logo{
 }
 .services .service-title{
     transform: scale(0);
-    transition: var(--transition);
+    transition: 1s;
 }
 .services .container{
     display: grid;
@@ -732,14 +757,15 @@ header .logo{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px solid var(--border);
+    border: 3px solid var(--border);
     transition: var(--transition);
     box-shadow: 0 5px 25px var(--shadow);
-    opacity: 0;
+    position: relative;
+    transform: scale(0);
 }
 .services .card:hover {
-    transform: scale(1.1);
     border-color: var(--main-color);
+    transform: scale(1.1) !important;
 }
 .services .card:hover::before{
     width: 100%;
@@ -777,11 +803,6 @@ header .logo{
 .services .info p{
     color: var(--p-color);
 }
-@media(max-width:1200px){
-    .services .card:hover {
-        transform: scale(1.05);
-    }
-}
 .projects {
     background-color: var(--bag-dark);
     padding-top: var(--main-padding);
@@ -790,7 +811,7 @@ header .logo{
 }
 .projects .project-title{
     transform: scale(0);
-    transition: var(--transition);
+    transition: 1s;
 }
 .projects .container{
     display: grid;
@@ -799,16 +820,16 @@ header .logo{
 }
 .projects .card {
     background-color: var(--card-bg);
-    border: 2px solid var(--border);
+    border: 3px solid var(--border);
     overflow: hidden;
     border-radius: 15px;
-    transition: var(--transition);
+    transition: 1s;
     box-shadow: 0 5px 25px var(--shadow);
-    opacity: 0;
+    transform: scale(0);
 }
 .projects .card:hover {
-    transform: scale(1.1);
     border-color: var(--main-color);
+    transform: scale(1.1) !important;
 }
 .projects .image{
     overflow: hidden;
@@ -846,42 +867,48 @@ header .logo{
     color: var(--alt-color);
     transform: scale(1.1);
 }
-.projects .alt-title{
-    text-align: center;
-    color: var(--main-color);
+.projects ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
     margin-bottom: 60px;
-    position: relative;
+    justify-content: center;
     transform: scale(0);
-    transition: var(--transition);
+    transition: 1s;
 }
-.projects .alt-title h3{
-    font-size: 25px;
-    font-weight: 600;
+.projects ul li{
+    background-color: var(--card-bg);
+    color: var(--dark);
+    width: 200px;
+    padding: 12px 0;
+    font-size: 18px;
+    cursor: pointer;
+    transition: .4s;
+    border: 2px solid var(--border);
+    text-align: center;
 }
-.projects .alt-title::after{
-    position: absolute;
-    bottom: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    content: "\f103";
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
-    animation: arrow .7s linear infinite;
+.projects ul li:hover,.projects .active{
+    border-color: var(--main-color);
+    color: var(--main-color);
 }
-@keyframes arrow {
-    0%,100%{
-        transform: translateY(-2px);
-    }
-    50%{
-        transform: translateY(-9px);
-    }
-}
-.projects .mrg{
-    margin-top: 60px;
+.projects .hide,.projects .notLat{
+    display: none;
 }
 @media(max-width:1200px){
-    .projects .card:hover {
-        transform: scale(1.05);
+    .skills .card:hover{
+        transform: scale(1.05) !important;
+    }
+    .services .card:hover{
+        transform: scale(1.05) !important;
+    }
+    .projects .card:hover{
+        transform: scale(1.05) !important;
+    }
+}
+@media(max-width:420px){
+    .projects ul li{
+        width: 150px;
+        font-size: 18px;
     }
 }
 .contact{
@@ -893,7 +920,7 @@ header .logo{
 }
 .contact .contact-title{
     transform: scale(0);
-    transition: var(--transition);
+    transition: 1s;
 }
 .contact .container{
     display: grid;
@@ -902,9 +929,13 @@ header .logo{
 }
 .contact .cards{
     opacity: 0;
+    position: relative;
+    left: -150px;
 }
 .contact form{
     opacity: 0;
+    position: relative;
+    left: 150px;
 }
 .contact .card{
     background-color: var(--bag-dark);
@@ -913,7 +944,7 @@ header .logo{
     padding: 15px;
     transition: var(--transition);
     margin-bottom: 20px;
-    border: 2px solid var(--border);
+    border: 3px solid var(--border);
     box-shadow: 0 5px 25px var(--shadow);
 }
 .contact .card:hover{
@@ -956,10 +987,6 @@ header .logo{
     caret-color: var(--main-color);
     color: var(--dark);
 }
-.contact input:focus,
-.contact textarea:focus{
-    border: 2px solid var(--alt-color);
-}
 .contact textarea{
     height: 150px;
     resize: none;
@@ -984,8 +1011,8 @@ header .logo{
     color: white;
 }
 @media(max-width:1200px){
-    .contact .card:hover {
-        transform: scale(1.02);
+    .contact .card:hover{
+        transform: scale(1.05);
     }
 }
 @media(max-width:700px){
@@ -998,9 +1025,6 @@ header .logo{
 @media(max-width:500px){
     .contact form button{
         margin: auto;
-    }
-    .contact .card:hover {
-        transform: scale(1.05);
     }
 }
 footer {
@@ -1017,6 +1041,8 @@ footer p{
     font-size: 20px;
     font-weight: 600;
     opacity: 0;
+    position: relative;
+    left: -150px;
 }
 footer p span {
     color: var(--main-color);
@@ -1031,6 +1057,8 @@ footer .social-icons a{
     color: var(--dark);
     transition: var(--transition);
     opacity: 0;
+    position: relative;
+    left: 150px;
 } 
 footer .social-icons a:hover{
     color: var(--main-color);
